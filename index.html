@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Travelbloks</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/angular.wizard/latest/angular-wizard.min.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/image-hover.css" rel="stylesheet">
+
+    <link rel="icon" href="img/favicon.png">
+</head>
+<body ng-app="tb-app">
+
+<div class="site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand"></h3>
+                </div>
+            </div>
+
+            <div class="inner cover" ng-controller="TbCtrl">
+                <wizard on-finish="finishedWizard()">
+                    <wz-step title="Vakantie">
+                        <h2>Heeft u al een vakantie in gedachte?</h2>
+
+                        <button type="button" class="btn btn-primary btn-lg" wz-next ng-click="enableStep('yes')">Ja</button>
+                        <button type="button" class="btn btn-primary btn-lg" wz-next ng-click="enableStep('no')">Nee
+                        </button>
+                    </wz-step>
+
+                    <wz-step title="Vakantie">
+                        <h2>We gaan over naar de volgende stap</h2>
+
+                        <button type="button" class="btn btn-primary btn-lg" wz-next >Verder</button>
+
+                    </wz-step>
+                    <wz-step title="Yes" wz-disabled="{{yes}}">
+                        <h2>U weet wat u wilt doen!</h2>
+
+                    </wz-step>
+                    <wz-step title="No" wz-disabled="{{no}}">
+                        <h2>Wat wilt u doen?</h2>
+                        <div class="hover column">
+                            <div>
+                                <figure wz-next value="Sightseeing" ng-click="getValue($element.target)"><img
+                                        src="img/content/sightseeing.jpg"/></figure>
+                                <span>Sightseeing</span>
+                            </div>
+                            <div>
+                                <figure wz-next value="Surfen"><img src="img/content/surfen.jpg"/></figure>
+                                <span>Surfen</span>
+                            </div>
+                            <div>
+                                <figure wz-next value="Bergbeklimmen"><img src="img/content/bergbeklimmen.jpg"/>
+                                </figure>
+                                <span>Bergbeklimmen</span>
+                            </div>
+                        </div>
+
+                        <div class="hover column">
+                            <div>
+                                <figure wz-next value="Cultureel"><img src="img/content/cultureel.jpg"/></figure>
+                                <span>Cultureel</span>
+                            </div>
+                            <div>
+                                <figure wz-next value="Zon, zee en strand"><img src="img/content/zzs.jpg"/></figure>
+                                <span>Zon, zee en strand</span>
+                            </div>
+                            <div>
+                                <figure wz-next value="Luxe"><img src="img/content/luxe.jpg"/></figure>
+                                <span>Luxe</span>
+                            </div>
+                        </div>
+                    </wz-step>
+                    <wz-step title="Vakantie">
+                        <h2>We gaan over naar de volgende stap</h2>
+
+                        <button type="button" class="btn btn-primary btn-lg" wz-next >Verder</button>
+
+                        <!--<input type="submit" wz-next value="Continue" />-->
+                    </wz-step>
+                    <wz-step title="Waar">
+
+
+                        <h2>Waar wilt u dit doen?</h2>
+                        <div class="hover column">
+                            <div>
+                                <figure wz-next value="Afrika" ng-click="getValue($element.target)"><img
+                                        src="img/continents/afrika.png"/></figure>
+                                <span>Afrika</span>
+                            </div>
+                            <div>
+                                <figure wz-next value="Azie"><img src="img/continents/azie.png"/></figure>
+                                <span>Azie</span>
+                            </div>
+                            <div>
+                                <figure wz-next value="Europa"><img src="img/continents/europa.png"/>
+                                </figure>
+                                <span>Europa</span>
+                            </div>
+                        </div>
+
+                        <div class="hover column">
+                            <div>
+                                <figure wz-next value="Noord-Amerika"><img src="img/continents/noord-amerika.png"/></figure>
+                                <span>Noord-Amerika</span>
+                            </div>
+                            <div>
+                                <figure wz-next value="Zuid-Amerika"><img src="img/continents/zuid-amerika.png"/></figure>
+                                <span>Zuid-Amerika</span>
+                            </div>
+
+                        </div>
+                    </wz-step>
+                </wizard>
+
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Travelbloks © alle rechten voorbehouden.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/angular.wizard/latest/angular-wizard.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="https://npmcdn.com/headroom.js@0.8.0/dist/headroom.min.js"></script>
+
+
+</body>
+</html>
