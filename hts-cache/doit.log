@@ -1,0 +1,8 @@
+-qir20%e3C2t%Pns2u1%s%uN0%I0p7BaK0H0%kf2A250000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "" -%l "en, *" http://mybootheme.com/pasific/v1_0_3/portfolio-masonry-1.html -O1 "C:\My Web Sites\Pasific" +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp
+File generated automatically on Wed, 06 Apr 2016 16:09:18, do NOT edit
+
+To update a mirror, just launch httrack without any parameters
+The existing cache will be used (and modified)
+To have other options, retype all parameters and launch HTTrack
+To continue an interrupted mirror, just launch httrack without any parameters
+

@@ -1,0 +1,22 @@
+HTTrack3.48-21+htsswf+htsjava launched on Wed, 06 Apr 2016 16:09:18 at http://mybootheme.com/pasific/v1_0_3/portfolio-masonry-1.html +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp
+(winhttrack -qir20%e3C2t%Pns2u1%s%uN0%I0p7BaK0H0%kf2A250000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F  -%l "en, *" http://mybootheme.com/pasific/v1_0_3/portfolio-masonry-1.html -O1 "C:\My Web Sites\Pasific" +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar +*.gif +*.jpg +*.jpeg +*.png +*.tif +*.bmp )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+16:12:37	Warning: 	HTML file (134757 bytes) retransferred due to lack of cache: mybootheme.com/pasific/v1_0_3/mp-index-parallax-1.html
+16:12:39	Warning: 	HTML file (59695 bytes) retransferred due to lack of cache: mybootheme.com/pasific/v1_0_3/shortcode-animations.html
+16:13:02	Error: 	"Not Found" (404) at link mybootheme.com/pasific/v1_0_3/img/bg/3-2.jpg (from mybootheme.com/pasific/v1_0_3/page-contact-1.html)
+16:13:03	Warning: 	File not parsed, looks like binary: mybootheme.com/pasific/v1_0_3/assets/fonts/glyphicons/glyphicons-halflings-regular.woff2
+16:13:03	Error: 	"Not Found" (404) at link mybootheme.com/pasific/v1_0_3/assets/css/owl-carousel/grabbing.png (from mybootheme.com/pasific/v1_0_3/assets/css/owl-carousel/owl.carousel.css)
+16:13:03	Error: 	"Not Found" (404) at link mybootheme.com/pasific/v1_0_3/assets/css/owl-carousel/AjaxLoader.gif (from mybootheme.com/pasific/v1_0_3/assets/css/owl-carousel/owl.theme.css)
+16:13:03	Warning: 	File not parsed, looks like binary: mybootheme.com/pasific/v1_0_3/assets/fonts/font-awesome/fontawesome-webfont.woff2?v=4.5.0
+16:13:04	Error: 	"Not Found" (404) at link mybootheme.com/pasific/v1_0_3/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/ (from connect.facebook.net/en_US/sdk.js)
+16:13:04	Error: 	"Not Found" (404) at link mybootheme.com/restserver.php (from connect.facebook.net/en_US/sdk.js)
+16:13:04	Error: 	"Not Found" (404) at link mybootheme.com/pasific/v1_0_3/dialog/ (from connect.facebook.net/en_US/sdk.js)
+16:13:04	Error: 	"Bad Request" (400) at link mybootheme.com/pasific/v1_0_3/%s/profile.php?id=%s (from connect.facebook.net/en_US/sdk.js)
+
+HTTrack Website Copier/3.48-21 mirror complete in 3 minutes 46 seconds : 780 links scanned, 774 files written (30583717 bytes overall), 741 files updated [29835636 bytes received at 132016 bytes/sec], 179409 bytes transferred using HTTP compression in 1 files, ratio 30%, 28.5 requests per connection
+(7 errors, 4 warnings, 0 messages)
