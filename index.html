@@ -158,278 +158,290 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt25 mb50">
-
+                <h2 class="text-center">Ik ben op zoek naar <input type="text" ng-model="search" class="text-left modal-search-input" placeholder="" style="width: 30%; color: orangered"autofocus></h2>
+                <ul class="text-center mt25 mb50">
+                    <!--<li><a class="active" data-filter="*">All Projects</a></li>-->
+                    <li ng-repeat="tag in tags | filter:search:strict | limitTo:10 | orderBy:random" ng-if="tag !=='Reisverslag'"><a class="" ng-click="addTag(tag)">{{ tag }}</a></li>
+                </ul>
                 <ul class="text-center filters mt25 mb50">
-                    <li><a class="active" data-filter="*">All Projects</a></li>
-                    <li><a class="" data-filter=".html">HTMl</a></li>
-                    <li><a class="" data-filter=".wordpress">Wordpress</a></li>
-                    <li><a class="" data-filter=".woocommerce">WooCommerce</a></li>
-                    <li><a class="" data-filter=".joomla">Joomla</a></li>
-                    <li><a class="" data-filter=".magento">Magento</a></li>
-                    <li><a class="" data-filter=".shopify">Shopify</a></li>
+                    <li ng-repeat="tag in tags" ng-if="isPersonal(tag)"><a class="" data-filter=".{{ tag }}" ng-if="tag!=='Reisverslag'">{{ tag }}</a></li>
                 </ul>
 
                 <div class="portfolio-masonry-one">
-
-                    <div class="portfolio-masonry-one-item width2 woocommerce bb1">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-370x165-1.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
+                    <div ng-repeat="item in data.items">
+                        <div ng-repeat="tag in item.tags" class="portfolio-masonry-one-item width2 {{ tag }}">
+                            <div class="portfolio-mask text-center">
+                                <h6>{{ item.title }}</h6>
+                                <p><a href="#">{{ item.title }}</a></p>
+                                <div class="portfolio-mask-attr text-center">
+                                    <a href="{{ item.image }}" class="magnific-popup" title="project title">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
                             </div>
+                            <img src="{{ item.image }}" alt="" class="img-responsive">
                         </div>
-                        <img src="assets/img/portfolio/thumbs/img-370x165-1.jpg" alt="portfolio woocommerce" class="img-responsive">
                     </div>
 
-                    <div class="portfolio-masonry-one-item height2 woocommerce html">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x340-1.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x340-1.jpg" alt="portfolio logo html" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item width2 ermagurd woocommerce bb1">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-370x165-1.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-1.jpg" alt="portfolio woocommerce" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item wordpress shopify">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x165-1.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x165-1.jpg" alt="portfolio wordpress" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item height2 woocommerce html">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x340-1.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x340-1.jpg" alt="portfolio logo html" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item wordpress joomla">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x165-2.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x165-2.jpg" alt="portfolio joomla" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item wordpress shopify">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x165-1.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-1.jpg" alt="portfolio wordpress" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item width2 height2 magento html">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-370x340-1.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-370x340-1.jpg" alt="" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item wordpress joomla">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x165-2.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-2.jpg" alt="portfolio joomla" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item width2 woocommerce html joomla">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-370x165-2.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-370x165-2.jpg" alt="portfolio logo html joomla" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item width2 height2 magento html">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-370x340-1.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-370x340-1.jpg" alt="" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item width2 width2 magento">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-370x165-3.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-370x165-3.jpg" alt="portfolio ecommerse" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item width2 woocommerce html joomla">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-370x165-2.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-2.jpg" alt="portfolio logo html joomla" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item height2 joomla wordpress">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x340-2.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x340-2.jpg" alt="portfolio joomla wordpress" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item width2 width2 magento">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-370x165-3.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-3.jpg" alt="portfolio ecommerse" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item wordpress joomla shopify">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x165-3.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x165-3.jpg" alt="portfolio joomla" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item height2 joomla wordpress">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x340-2.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x340-2.jpg" alt="portfolio joomla wordpress" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item ecommerse joomla wordpress shopify">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x165-4.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x165-4.jpg" alt="portfolio wordpress" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item wordpress joomla shopify">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x165-3.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-3.jpg" alt="portfolio joomla" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item width2 woocommerce bb1">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-370x165-1.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-370x165-1.jpg" alt="portfolio woocommerce" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item magento ecommerse joomla wordpress shopify">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x165-4.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-4.jpg" alt="portfolio wordpress" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item height2 woocommerce html">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x340-1.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x340-1.jpg" alt="portfolio logo html" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item width2 woocommerce bb1">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-370x165-1.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-1.jpg" alt="portfolio woocommerce" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item wordpress shopify">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x165-1.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x165-1.jpg" alt="portfolio wordpress" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item height2 woocommerce html">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x340-1.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x340-1.jpg" alt="portfolio logo html" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item wordpress joomla">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x165-2.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x165-2.jpg" alt="portfolio joomla" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item wordpress shopify">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x165-1.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-1.jpg" alt="portfolio wordpress" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item width2 height2 magento html">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-370x340-1.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-370x340-1.jpg" alt="" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item wordpress joomla">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x165-2.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-2.jpg" alt="portfolio joomla" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item width2 woocommerce html joomla">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-370x165-2.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-370x165-2.jpg" alt="portfolio logo html joomla" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item width2 height2 magento html">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-370x340-1.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-370x340-1.jpg" alt="" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item width2 magento">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-370x165-3.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-370x165-3.jpg" alt="portfolio ecommerse" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item width2 woocommerce html joomla">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-370x165-2.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-2.jpg" alt="portfolio logo html joomla" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item height2 joomla wordpress">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x340-2.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x340-2.jpg" alt="portfolio joomla wordpress" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item width2 magento">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-370x165-3.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-3.jpg" alt="portfolio ecommerse" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item wordpress joomla shopify">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x165-3.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x165-3.jpg" alt="portfolio joomla" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item height2 joomla wordpress">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x340-2.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x340-2.jpg" alt="portfolio joomla wordpress" class="img-responsive">-->
+                    <!--</div>-->
 
-                    <div class="portfolio-masonry-one-item ecommerse joomla wordpress shopify">
-                        <div class="portfolio-mask text-center">
-                            <h6>Website Project</h6>
-                            <p><a href="#">themeforest.net</a></p>
-                            <div class="portfolio-mask-attr text-center">
-                                <a href="assets/img/portfolio/preview/img-180x165-4.jpg" class="magnific-popup" title="project title">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <img src="assets/img/portfolio/thumbs/img-180x165-4.jpg" alt="portfolio wordpress" class="img-responsive">
-                    </div>
+                    <!--<div class="portfolio-masonry-one-item wordpress joomla shopify">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x165-3.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-3.jpg" alt="portfolio joomla" class="img-responsive">-->
+                    <!--</div>-->
+
+                    <!--<div class="portfolio-masonry-one-item ecommerse joomla wordpress shopify">-->
+                        <!--<div class="portfolio-mask text-center">-->
+                            <!--<h6>Website Project</h6>-->
+                            <!--<p><a href="#">themeforest.net</a></p>-->
+                            <!--<div class="portfolio-mask-attr text-center">-->
+                                <!--<a href="assets/img/portfolio/preview/img-180x165-4.jpg" class="magnific-popup" title="project title">-->
+                                    <!--<i class="fa fa-search-plus"></i>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-4.jpg" alt="portfolio wordpress" class="img-responsive">-->
+                    <!--</div>-->
 
 
                 </div>
@@ -615,6 +627,7 @@
     <!--</div>-->
 <!--</footer>-->
 <script src="assets/js/angular/angular.min.js"></script>
+<script src="assets/js/angular/angular-sanitize.min.js"></script>
 
 <!-- JQuery Core
 =====================================-->

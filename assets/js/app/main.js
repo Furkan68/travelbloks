@@ -1,4 +1,4 @@
-var app = angular.module('TravelBloks', []);
+var app = angular.module('TravelBloks', ['ngSanitize']);
 
 app.filter('parseYT', function($sce) {
     return function (video){
@@ -33,15 +33,46 @@ app.filter('getById', function() {
 
 app.controller('MainController', function($scope, $http){
 
+    $scope.tags = null;
+    $scope.personalTags = [];
+    
     $scope.init = function(){
         $scope.getData();
     };
     
     $scope.getData = function(){
         $http.get('/json/data.json').success(function(response){
-           console.log(response);
-            $scope.data = response;
+            $scope.data = response.data;
+            var log = [];
+            angular.forEach($scope.data.items, function(value, key) {
+                angular.forEach(value.tags, function(value, key){
+                    if(log.indexOf(value) == -1){
+                        this.push(value);
+                    }
+                }, log);
+            });
+            $scope.tags = log;
         });
+    };
+
+    $scope.isPersonal = function(tag){
+        if($scope.personalTags.indexOf(tag) == -1){
+            return 0;
+        }else{
+            return 1;
+        }
+    };
+    
+    $scope.addTag = function(tag){
+        if($scope.personalTags.indexOf(tag) == -1){
+            $scope.personalTags.push(tag);
+        }
+        console.log($scope.personalTags);
+
+    };
+
+    $scope.random = function(){
+        return 0.5 - Math.random();
     };
 
     $scope.init();
