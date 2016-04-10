@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="author" content="Harry Boo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="assets/img/favicon.png">
@@ -23,7 +23,6 @@
     <!-- Load Main CSS
     =====================================-->
     <link rel="stylesheet" href="assets/css/main/main.min.css">
-
 
 
     <!-- Load Magnific Popup CSS
@@ -63,6 +62,7 @@
     <link rel="stylesheet" href="assets/css/icon/linea-weather-10.css">-->
     <link rel="stylesheet" href="assets/css/icon/font-awesome.css">
     <link rel="stylesheet" href="assets/css/icon/et-line-font.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
 
     <!-- Load JS
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -75,7 +75,8 @@
     <![endif]-->
 
 </head>
-<body id="topPage" data-spy="scroll" data-target=".navbar" data-offset="100" ng-app="TravelBloks" ng-controller="MainController">
+<body id="topPage" data-spy="scroll" data-target=".navbar" data-offset="100" ng-app="TravelBloks"
+      ng-controller="MainController">
 
 <!-- Page Loader
 ===================================== -->
@@ -88,7 +89,8 @@
 
 <!-- Navigation Area
 ===================================== -->
-<nav class="navbar navbar-pasific navbar-mp navbar-standart megamenu navbar-fixed-top" style="border-bottom:1px solid #fff;">
+<nav class="navbar navbar-pasific navbar-mp navbar-standart megamenu navbar-fixed-top"
+     style="border-bottom:1px solid #fff;">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
@@ -102,10 +104,11 @@
 
         <div class="navbar-collapse collapse navbar-main-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/" >Home</a></li>
-                <li><a href="/" >Reisverslagen</a></li>
-                <li><a href="/" >Reizen</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search fa-fw color-pasific"></i></a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Reisverslagen</a></li>
+                <li><a href="/">Reizen</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#searchModal"><i
+                        class="fa fa-search fa-fw color-pasific"></i></a></li>
             </ul>
         </div>
     </div>
@@ -138,13 +141,17 @@
 
 <!-- Sub Header
 ===================================== -->
-<div class="pt100 pb100 parallax-window-2" data-parallax="scroll" data-speed="0.5" data-image-src="https://images.unsplash.com/39/yvDPJ8ZSmSVob7pRxIvU_IMG_40322.jpg" data-positionY="1000">
+<div class="pt100 pb100 parallax-window-2" data-parallax="scroll" data-speed="0.5"
+     data-image-src="https://images.unsplash.com/39/yvDPJ8ZSmSVob7pRxIvU_IMG_40322.jpg" data-positionY="1000">
     <div class="intro-body text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 pt50">
-                    <h1 class="brand-heading font-montserrat text-uppercase color-light" data-in-effect="fadeInDown">Waar ben je naar op zoek?</h1>
-                    <h4 class="brand-heading font-montserrat text-uppercase color-light alpha5" data-in-effect="fadeInDown">Welke van de volgende afbeeldingen passen in jouw perfecte vakantie?</h4>
+                    <h1 class="brand-heading font-montserrat text-uppercase color-light" data-in-effect="fadeInDown">
+                        Waar ben je naar op zoek?</h1>
+                    <h4 class="brand-heading font-montserrat text-uppercase color-light alpha5"
+                        data-in-effect="fadeInDown">Welke van de volgende afbeeldingen passen in jouw perfecte
+                        vakantie?</h4>
                 </div>
             </div>
         </div>
@@ -158,294 +165,78 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt25 mb50">
-                <h2 class="text-center">Ik ben op zoek naar <input type="text" ng-model="search" class="text-left modal-search-input" placeholder="" style="width: 30%; color: orangered"autofocus></h2>
-                <ul class="text-center mt25 mb50">
+
+                <h2 class="text-center">Ik ben op zoek naar <input type="text" ng-model="search"
+                                                                   class="text-left modal-search-input" placeholder=""
+                                                                   style="width: 30%; color: orangered" autofocus></h2>
+                <ul class="text-center filters mt25 mb50">
                     <!--<li><a class="active" data-filter="*">All Projects</a></li>-->
-                    <li ng-repeat="tag in tags | filter:search:strict | limitTo:10 | orderBy:random" ng-if="tag !=='Reisverslag'"><a class="" ng-click="addTag(tag)">{{ tag }}</a></li>
+                    <li ng-repeat="tag in tags | filter:search:strict | limitTo:10 | orderBy:random"
+                        ng-if="tag !=='Reisverslag'"><a data-filter=".{{ tag }}" ng-if="tag!=='Reisverslag'" class=""
+                                                        ng-click="addTag(tag)">{{ tag }}</a></li>
                 </ul>
                 <ul class="text-center filters mt25 mb50">
-                    <li ng-repeat="tag in tags" ng-if="isPersonal(tag)"><a class="" data-filter=".{{ tag }}" ng-if="tag!=='Reisverslag'">{{ tag }}</a></li>
+                    <li ng-repeat="tag in personalTags"><a class="" data-filter=".{{ tag }}"
+                                                           ng-if="tag!=='Reisverslag'">{{ tag }}</a></li>
                 </ul>
 
                 <div class="portfolio-masonry-one">
                     <div ng-repeat="item in data.items">
-                        <div ng-repeat="tag in item.tags" class="portfolio-masonry-one-item width2 {{ tag }}">
+                        <div class="portfolio-masonry-one-item width2 {{ item.tags[0] }} {{ item.tags[1] }} {{ item.tags[2] }} {{ item.tags[3] }} {{ item.tags[4] }} {{ item.tags[5] }} {{ item.tags[6] }} {{ item.tags[7] }} {{ item.tags[8] }} {{ item.tags[9] }} {{ item.tags[10] }}">
                             <div class="portfolio-mask text-center">
                                 <h6>{{ item.title }}</h6>
                                 <p><a href="#">{{ item.title }}</a></p>
                                 <div class="portfolio-mask-attr text-center">
-                                    <a href="{{ item.image }}" class="magnific-popup" title="project title">
-                                        <i class="fa fa-search-plus"></i>
+                                    <a ng-click="like(item)" class="magnific-popup" title="project title">
+                                        <i class="likeButton fa fa-thumbs-up"></i>
                                     </a>
                                 </div>
                             </div>
                             <img src="{{ item.image }}" alt="" class="img-responsive">
                         </div>
                     </div>
-
-                    <!--<div class="portfolio-masonry-one-item width2 ermagurd woocommerce bb1">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-370x165-1.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-1.jpg" alt="portfolio woocommerce" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item height2 woocommerce html">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x340-1.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x340-1.jpg" alt="portfolio logo html" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item wordpress shopify">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x165-1.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-1.jpg" alt="portfolio wordpress" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item wordpress joomla">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x165-2.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-2.jpg" alt="portfolio joomla" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item width2 height2 magento html">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-370x340-1.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-370x340-1.jpg" alt="" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item width2 woocommerce html joomla">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-370x165-2.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-2.jpg" alt="portfolio logo html joomla" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item width2 width2 magento">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-370x165-3.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-3.jpg" alt="portfolio ecommerse" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item height2 joomla wordpress">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x340-2.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x340-2.jpg" alt="portfolio joomla wordpress" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item wordpress joomla shopify">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x165-3.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-3.jpg" alt="portfolio joomla" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item magento ecommerse joomla wordpress shopify">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x165-4.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-4.jpg" alt="portfolio wordpress" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item width2 woocommerce bb1">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-370x165-1.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-1.jpg" alt="portfolio woocommerce" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item height2 woocommerce html">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x340-1.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x340-1.jpg" alt="portfolio logo html" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item wordpress shopify">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x165-1.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-1.jpg" alt="portfolio wordpress" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item wordpress joomla">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x165-2.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-2.jpg" alt="portfolio joomla" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item width2 height2 magento html">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-370x340-1.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-370x340-1.jpg" alt="" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item width2 woocommerce html joomla">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-370x165-2.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-2.jpg" alt="portfolio logo html joomla" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item width2 magento">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-370x165-3.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-370x165-3.jpg" alt="portfolio ecommerse" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item height2 joomla wordpress">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x340-2.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x340-2.jpg" alt="portfolio joomla wordpress" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item wordpress joomla shopify">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x165-3.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-3.jpg" alt="portfolio joomla" class="img-responsive">-->
-                    <!--</div>-->
-
-                    <!--<div class="portfolio-masonry-one-item ecommerse joomla wordpress shopify">-->
-                        <!--<div class="portfolio-mask text-center">-->
-                            <!--<h6>Website Project</h6>-->
-                            <!--<p><a href="#">themeforest.net</a></p>-->
-                            <!--<div class="portfolio-mask-attr text-center">-->
-                                <!--<a href="assets/img/portfolio/preview/img-180x165-4.jpg" class="magnific-popup" title="project title">-->
-                                    <!--<i class="fa fa-search-plus"></i>-->
-                                <!--</a>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<img src="assets/img/portfolio/thumbs/img-180x165-4.jpg" alt="portfolio wordpress" class="img-responsive">-->
-                    <!--</div>-->
-
-
                 </div>
-
+                <h2 class="text-center"><a href="#artikelen" class="">Geef mij meer inspiratie!</a></h2>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <div id="artikelen">
+                    <div class="row blog-masonry-3col">
+                        <div ng-repeat="like in likes">
+                            <div class="col-md-4 col-sm-6 col-xs-12 mb50">
+                                <div class="blog-three">
+                                    <h4 class="blog-title"><a href="#">{{ like.title }}</a></h4>
+                                    <img src="{{ like.image }}" class="img-responsive" alt="image blog">
+                                    <p class="mt25" ng-bind-html="like.description | limitTo:250">
+                                    </p>
+                                    <p>...</p>
+                                    <a href="#" class="button button-gray button-xs">Lees Meer <i
+                                            class="fa fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text-center"><a href="#advertenties" class="">Ik wil op <strong>reis</strong>!</a></h2>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                    <!--END-->
+                </div>
+                <div id="advertenties">
+                            <h2>Aanbiedingen</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="http://www.airtransat.com/getmedia/22463e82-447c-49b0-bb98-997284fc3675/Rome03.jpg" class="img-responsive">
+                                    <p>All-in vlucht naar Rome. Verblijf 7 dagen in een lux 4-sterren hotel.</p>
+                                    <p>€1250,-</p>
+                                    <a class="button button-gray">Boek nu!</a>
+                                </div>
+                                <div class="col-md-6">
+                                    <img src="http://www.easyjet.com/nl/vakantie/shared/images/guides/united-kingdom.jpg" class="img-responsive">
+                                    <p>Busreis naar Engeland. Verblijf 7 dagen in een lux 4-sterren hotel.</p>
+                                    <p>€750,-</p>
+                                    <a class="button button-gray">Boek nu!</a>
+                                </div>
+                            </div>
+                </div>
             </div>
         </div>
     </div>
@@ -454,177 +245,176 @@
 
 <!-- Testimonial Area
 ===================================== -->
-<div>
-    <div class="container-fluid pb25 pt70" style="background: url(assets/img/bg/bg-subheader-5.jpg) 50% 50% no-repeat;">
-        <div class="row">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="owlSectionThreeItem" class="owl-carousel">
+<!--<div>-->
+<!--<div class="container-fluid pb25 pt70" style="background: url(assets/img/bg/bg-subheader-5.jpg) 50% 50% no-repeat;">-->
+<!--<div class="row">-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<div id="owlSectionThreeItem" class="owl-carousel">-->
 
-                            <!-- Testimonial Item -->
-                            <div class="testimonial testimonial-center">
-                                <div class="testimonial-header">
-                                    <img src="assets/img/other/photo-1.jpg" alt="testimonial author" class="img-responsive img-circle">
-                                </div>
-                                <div class="testimonial-body">
-                                    <p class="color-light">
-                                        Pasific template is the best template so far. So easy to customize and clean code. Recommended!
-                                    </p>
-                                </div>
-                                <div class="testimonial-footer">
-                                    <i class="fa fa-quote-left"></i>
-                                    Martin Smith <a href="#">Smashingmagazine.com   </a>
-                                </div>
-                            </div>
+<!--&lt;!&ndash; Testimonial Item &ndash;&gt;-->
+<!--<div class="testimonial testimonial-center">-->
+<!--<div class="testimonial-header">-->
+<!--<img src="assets/img/other/photo-1.jpg" alt="testimonial author" class="img-responsive img-circle">-->
+<!--</div>-->
+<!--<div class="testimonial-body">-->
+<!--<p class="color-light">-->
+<!--Pasific template is the best template so far. So easy to customize and clean code. Recommended!-->
+<!--</p>-->
+<!--</div>-->
+<!--<div class="testimonial-footer">-->
+<!--<i class="fa fa-quote-left"></i>-->
+<!--Martin Smith <a href="#">Smashingmagazine.com   </a>-->
+<!--</div>-->
+<!--</div>-->
 
-                            <!-- Testimonial Item -->
-                            <div class="testimonial testimonial-center">
-                                <div class="testimonial-header">
-                                    <img src="assets/img/other/photo-2.jpg" alt="testimonial author" class="img-responsive img-circle">
-                                </div>
-                                <div class="testimonial-body">
-                                    <p class="color-light">
-                                        Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
-                                    </p>
-                                </div>
-                                <div class="testimonial-footer">
-                                    <i class="fa fa-quote-left"></i>
-                                    Steve Austin <a href="#">envato.com   </a>
-                                </div>
-                            </div>
+<!--&lt;!&ndash; Testimonial Item &ndash;&gt;-->
+<!--<div class="testimonial testimonial-center">-->
+<!--<div class="testimonial-header">-->
+<!--<img src="assets/img/other/photo-2.jpg" alt="testimonial author" class="img-responsive img-circle">-->
+<!--</div>-->
+<!--<div class="testimonial-body">-->
+<!--<p class="color-light">-->
+<!--Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.-->
+<!--</p>-->
+<!--</div>-->
+<!--<div class="testimonial-footer">-->
+<!--<i class="fa fa-quote-left"></i>-->
+<!--Steve Austin <a href="#">envato.com   </a>-->
+<!--</div>-->
+<!--</div>-->
 
-                            <!-- Testimonial Item -->
-                            <div class="testimonial testimonial-center">
-                                <div class="testimonial-header">
-                                    <img src="assets/img/other/photo-3.jpg" alt="testimonial author" class="img-responsive img-circle">
-                                </div>
-                                <div class="testimonial-body">
-                                    <p class="color-light">
-                                        Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo.
-                                    </p>
-                                </div>
-                                <div class="testimonial-footer">
-                                    <i class="fa fa-quote-left"></i>
-                                    Johny English <a href="#">themeforest.net   </a>
-                                </div>
-                            </div>
+<!--&lt;!&ndash; Testimonial Item &ndash;&gt;-->
+<!--<div class="testimonial testimonial-center">-->
+<!--<div class="testimonial-header">-->
+<!--<img src="assets/img/other/photo-3.jpg" alt="testimonial author" class="img-responsive img-circle">-->
+<!--</div>-->
+<!--<div class="testimonial-body">-->
+<!--<p class="color-light">-->
+<!--Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo.-->
+<!--</p>-->
+<!--</div>-->
+<!--<div class="testimonial-footer">-->
+<!--<i class="fa fa-quote-left"></i>-->
+<!--Johny English <a href="#">themeforest.net   </a>-->
+<!--</div>-->
+<!--</div>-->
 
-                            <!-- Testimonial Item -->
-                            <div class="testimonial testimonial-center">
-                                <div class="testimonial-header">
-                                    <img src="assets/img/other/photo-1.jpg" alt="testimonial author" class="img-responsive img-circle">
-                                </div>
-                                <div class="testimonial-body">
-                                    <p class="color-light">
-                                        Pasific template is the best template so far. So easy to customize and clean code. Recommended!
-                                    </p>
-                                </div>
-                                <div class="testimonial-footer">
-                                    <i class="fa fa-quote-left"></i>
-                                    Martin Smith <a href="#">Smashingmagazine.com   </a>
-                                </div>
-                            </div>
+<!--&lt;!&ndash; Testimonial Item &ndash;&gt;-->
+<!--<div class="testimonial testimonial-center">-->
+<!--<div class="testimonial-header">-->
+<!--<img src="assets/img/other/photo-1.jpg" alt="testimonial author" class="img-responsive img-circle">-->
+<!--</div>-->
+<!--<div class="testimonial-body">-->
+<!--<p class="color-light">-->
+<!--Pasific template is the best template so far. So easy to customize and clean code. Recommended!-->
+<!--</p>-->
+<!--</div>-->
+<!--<div class="testimonial-footer">-->
+<!--<i class="fa fa-quote-left"></i>-->
+<!--Martin Smith <a href="#">Smashingmagazine.com   </a>-->
+<!--</div>-->
+<!--</div>-->
 
-                            <!-- Testimonial Item -->
-                            <div class="testimonial testimonial-center">
-                                <div class="testimonial-header">
-                                    <img src="assets/img/other/photo-2.jpg" alt="testimonial author" class="img-responsive img-circle">
-                                </div>
-                                <div class="testimonial-body">
-                                    <p class="color-light">
-                                        Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.
-                                    </p>
-                                </div>
-                                <div class="testimonial-footer">
-                                    <i class="fa fa-quote-left"></i>
-                                    Steve Austin <a href="#">envato.com   </a>
-                                </div>
-                            </div>
+<!--&lt;!&ndash; Testimonial Item &ndash;&gt;-->
+<!--<div class="testimonial testimonial-center">-->
+<!--<div class="testimonial-header">-->
+<!--<img src="assets/img/other/photo-2.jpg" alt="testimonial author" class="img-responsive img-circle">-->
+<!--</div>-->
+<!--<div class="testimonial-body">-->
+<!--<p class="color-light">-->
+<!--Quisque mollis lacus augue, a hendrerit leo tristique vitae. Mauris non ipsum molestie sagittis elit ac vulputate odio.-->
+<!--</p>-->
+<!--</div>-->
+<!--<div class="testimonial-footer">-->
+<!--<i class="fa fa-quote-left"></i>-->
+<!--Steve Austin <a href="#">envato.com   </a>-->
+<!--</div>-->
+<!--</div>-->
 
-                            <!-- Testimonial Item -->
-                            <div class="testimonial testimonial-center">
-                                <div class="testimonial-header">
-                                    <img src="assets/img/other/photo-3.jpg" alt="testimonial author" class="img-responsive img-circle">
-                                </div>
-                                <div class="testimonial-body">
-                                    <p class="color-light">
-                                        Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo.
-                                    </p>
-                                </div>
-                                <div class="testimonial-footer">
-                                    <i class="fa fa-quote-left"></i>
-                                    Johny English <a href="#">themeforest.net   </a>
-                                </div>
-                            </div>
+<!--&lt;!&ndash; Testimonial Item &ndash;&gt;-->
+<!--<div class="testimonial testimonial-center">-->
+<!--<div class="testimonial-header">-->
+<!--<img src="assets/img/other/photo-3.jpg" alt="testimonial author" class="img-responsive img-circle">-->
+<!--</div>-->
+<!--<div class="testimonial-body">-->
+<!--<p class="color-light">-->
+<!--Fusce quam augue, gravida tincidunt dui nec, tempor iaculis justo.-->
+<!--</p>-->
+<!--</div>-->
+<!--<div class="testimonial-footer">-->
+<!--<i class="fa fa-quote-left"></i>-->
+<!--Johny English <a href="#">themeforest.net   </a>-->
+<!--</div>-->
+<!--</div>-->
 
 
-                        </div>
+<!--</div>-->
 
-                    </div>
+<!--</div>-->
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
 
 <!-- Footer Area
 =====================================-->
 <!--<footer id="footer" class="footer-one center-block bg-light pt50 pb30 bt1">-->
-    <!--<div class="container">-->
-        <!--<div class="row">-->
+<!--<div class="container">-->
+<!--<div class="row">-->
 
-            <!--<div class="col-md-2 col-xs-12 mb25">-->
-                <!--<div class="navbar-brand-footer center-block">Pasific</div>-->
-                <!--<div class="copyright center-block">&copy; 2016. All rights reserved.</div>-->
-            <!--</div>-->
+<!--<div class="col-md-2 col-xs-12 mb25">-->
+<!--<div class="navbar-brand-footer center-block">Pasific</div>-->
+<!--<div class="copyright center-block">&copy; 2016. All rights reserved.</div>-->
+<!--</div>-->
 
-            <!--<div class="col-md-8 col-xs-12 text-center">-->
-                <!--<div class="row">-->
-                    <!--<div class="col-sm-12">-->
-                        <!--<ul class="bb1 bb-solid-1">-->
-                            <!--<li><a href="#">Home</a></li>-->
-                            <!--<li><a href="#">About</a></li>-->
-                            <!--<li><a href="#">Service</a></li>-->
-                            <!--<li><a href="#">Price</a></li>-->
-                            <!--<li><a href="#">Feature</a></li>-->
-                            <!--<li><a href="#">Works</a></li>-->
-                            <!--<li><a href="#">Shop</a></li>-->
-                            <!--<li><a href="#">Blog</a></li>-->
-                            <!--<li><a href="#">Contact</a></li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
+<!--<div class="col-md-8 col-xs-12 text-center">-->
+<!--<div class="row">-->
+<!--<div class="col-sm-12">-->
+<!--<ul class="bb1 bb-solid-1">-->
+<!--<li><a href="#">Home</a></li>-->
+<!--<li><a href="#">About</a></li>-->
+<!--<li><a href="#">Service</a></li>-->
+<!--<li><a href="#">Price</a></li>-->
+<!--<li><a href="#">Feature</a></li>-->
+<!--<li><a href="#">Works</a></li>-->
+<!--<li><a href="#">Shop</a></li>-->
+<!--<li><a href="#">Blog</a></li>-->
+<!--<li><a href="#">Contact</a></li>-->
+<!--</ul>-->
+<!--</div>-->
 
-                    <!--<div class="col-sm-12 mt25">-->
-                        <!--<ul>-->
-                            <!--<li><a href="#">Help Center</a></li>-->
-                            <!--<li><a href="#">Knowledgebase</a></li>-->
-                            <!--<li><a href="#">Term of Service</a></li>-->
-                            <!--<li><a href="#">Privacy Policy</a></li>-->
-                            <!--<li><a href="#">FAQs</a></li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
+<!--<div class="col-sm-12 mt25">-->
+<!--<ul>-->
+<!--<li><a href="#">Help Center</a></li>-->
+<!--<li><a href="#">Knowledgebase</a></li>-->
+<!--<li><a href="#">Term of Service</a></li>-->
+<!--<li><a href="#">Privacy Policy</a></li>-->
+<!--<li><a href="#">FAQs</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
-            <!--<div class="col-md-2 col-xs-12">-->
-                <!--<div class="social-container">-->
-                    <!--<ul class="footer-social text-center">-->
-                        <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
-                        <!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
-                        <!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
-                        <!--<li><a href="#"><i class="fa fa-github"></i></a></li>-->
-                        <!--<li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-            <!--</div>-->
+<!--<div class="col-md-2 col-xs-12">-->
+<!--<div class="social-container">-->
+<!--<ul class="footer-social text-center">-->
+<!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+<!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+<!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+<!--<li><a href="#"><i class="fa fa-github"></i></a></li>-->
+<!--<li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
 
-        <!--</div>-->
+<!--</div>-->
 
-    <!--</div>-->
+<!--</div>-->
 <!--</footer>-->
 <script src="assets/js/angular/angular.min.js"></script>
 <script src="assets/js/angular/angular-sanitize.min.js"></script>
@@ -648,7 +438,8 @@
 <script src="assets/js/main/owl.carousel.min.js"></script>
 <script src="assets/js/main/jquery.sticky.js"></script>
 <script src="assets/js/main/ion.rangeSlider.min.js"></script>
-<script src="assets/js/main/imagesloaded.pkgd.min.js"></script><script src="assets/js/main/main.js"></script>
+<script src="assets/js/main/imagesloaded.pkgd.min.js"></script>
+<script src="assets/js/main/main.js"></script>
 
 <script src="assets/js/app/main.js"></script>
 </body>

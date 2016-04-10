@@ -35,6 +35,12 @@ app.controller('MainController', function($scope, $http){
 
     $scope.tags = null;
     $scope.personalTags = [];
+
+    $scope.likes = [];
+
+    $scope.checkValue1 = function() {
+        return $scope.obj.value1 === 'someothervalue';
+    };
     
     $scope.init = function(){
         $scope.getData();
@@ -52,14 +58,17 @@ app.controller('MainController', function($scope, $http){
                 }, log);
             });
             $scope.tags = log;
+            $scope.bTags = log;
         });
     };
 
     $scope.isPersonal = function(tag){
         if($scope.personalTags.indexOf(tag) == -1){
-            return 0;
-        }else{
+            console.log(1);
             return 1;
+        }else{
+            console.log(0);
+            return 0;
         }
     };
     
@@ -68,7 +77,14 @@ app.controller('MainController', function($scope, $http){
             $scope.personalTags.push(tag);
         }
         console.log($scope.personalTags);
+        $scope.$apply();
+    };
 
+    $scope.like = function(item){
+        console.log('Liked item with ID: ' + item.id);
+        if($scope.likes.indexOf(item) == -1){
+            $scope.likes.push(item);
+        }
     };
 
     $scope.random = function(){
